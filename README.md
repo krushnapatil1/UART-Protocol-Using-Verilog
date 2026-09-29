@@ -56,12 +56,14 @@ UART-PROTOCOL/
 RTL Files
 
 uart_tx.v
+
 Implements the UART transmitter.
 Converts parallel 8-bit data into serial data.
 Generates start, data, and stop bits.
 Uses an FSM for transmission control.
 
 uart_rx.v
+
 Implements the UART receiver.
 Detects the start bit.
 Samples incoming serial data.
@@ -71,12 +73,15 @@ Generates rx_valid when a valid byte is received.
 Testbench Files
 
 tb_uart_tx.v
+
 Verifies the UART transmitter independently.
 
 tb_uart_rx.v
+
 Verifies the UART receiver independently.
 
 tb_uart.v
+
 Performs TX-RX loopback testing.
 The transmitter output is directly connected to the receiver input.
 Tests multiple 8-bit data values.
@@ -251,6 +256,7 @@ The waveform generated during UART TX-RX simulation is included in the repositor
 ## Verification
 
 The testbench verifies:
+
 UART TX operation
 UART RX operation
 Start bit generation
@@ -266,6 +272,7 @@ rx_valid generation
 ## What I Learned
 
 Through this project, I learned
+
 UART protocol fundamentals
 Serial communication
 UART frame structure
@@ -283,6 +290,7 @@ Verilog simulation using Icarus Verilog
 ## Future Improvements
 
 Possible improvements to this project include:
+
 Parity bit support
 Configurable baud rate
 Parameterized data width
