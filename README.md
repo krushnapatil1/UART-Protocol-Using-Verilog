@@ -38,7 +38,7 @@ Idle   Start   Data Bits (8)             Stop
 
 
 ```
-Project Structure
+## Project Structure
 
 ```
 UART-PROTOCOL/
@@ -52,39 +52,37 @@ UART-PROTOCOL/
 ├── .gitignore
 └── uart_waveform.png
 ```
+
 RTL Files
 
 uart_tx.v
-
 Implements the UART transmitter.
 Converts parallel 8-bit data into serial data.
 Generates start, data, and stop bits.
 Uses an FSM for transmission control.
 
 uart_rx.v
-
 Implements the UART receiver.
 Detects the start bit.
 Samples incoming serial data.
 Reconstructs the 8-bit received data.
 Generates rx_valid when a valid byte is received.
+
 Testbench Files
 
 tb_uart_tx.v
-
 Verifies the UART transmitter independently.
 
 tb_uart_rx.v
-
 Verifies the UART receiver independently.
 
 tb_uart.v
-
 Performs TX-RX loopback testing.
 The transmitter output is directly connected to the receiver input.
 Tests multiple 8-bit data values.
 
-UART TX-RX Loopback
+
+## UART TX-RX Loopback
 
 The complete loopback connection is:
 ```
@@ -108,7 +106,7 @@ In the loopback testbench:
 ```
 The TX output is directly connected to the RX input.
 
-Test Data
+## Test Data
 
 The loopback testbench uses different 8-bit data values such as:
 ```
@@ -120,7 +118,7 @@ The loopback testbench uses different 8-bit data values such as:
 ```
 This helps verify the UART for different data patterns.
 
-Baud Rate
+## Baud Rate
 
 The design uses a clock period of:
 ```
@@ -148,12 +146,10 @@ The receiver also uses approximately half a bit period for start-bit validation:
 13'd2604
 ```
 
-UART Receiver Sampling
+## UART Receiver Sampling
 
 The receiver first detects the falling edge of the start bit.
-
 It then waits approximately half a bit period and checks whether the signal is still LOW.
-
 If the start bit is valid, the receiver samples the data bits at approximately one-bit intervals.
 ```
 Start Bit
@@ -169,7 +165,9 @@ Start Bit
                             |
                             ...
 ```
-FSM Design
+
+## FSM Design
+
 Transmitter FSM
 ```
         +------+
@@ -222,33 +220,37 @@ Receiver FSM
            v
         IDLE
 ```
-Simulation
+
+## Simulation
 
 This project was simulated using:
 
 Icarus Verilog
 GTKWave
 VS Code
+
 Compile
 ```
 iverilog -o uart_sim uart_tx.v uart_rx.v tb_uart.v
 ```
+
 Run Simulation
 ```
 vvp uart_sim
 ```
+
 Open Waveform
 ```
 gtkwave uart.vcd
 ```
-Waveform
+
+## Waveform
 
 The waveform generated during UART TX-RX simulation is included in the repository.
 
-Verification
+## Verification
 
 The testbench verifies:
-
 UART TX operation
 UART RX operation
 Start bit generation
@@ -259,10 +261,11 @@ TX-RX loopback
 Different 8-bit data patterns
 tx_busy operation
 rx_valid generation
-What I Learned
 
-Through this project, I learned:
 
+## What I Learned
+
+Through this project, I learned
 UART protocol fundamentals
 Serial communication
 UART frame structure
@@ -275,10 +278,11 @@ Testbench development
 Loopback verification
 Waveform debugging using GTKWave
 Verilog simulation using Icarus Verilog
-Future Improvements
+
+
+## Future Improvements
 
 Possible improvements to this project include:
-
 Parity bit support
 Configurable baud rate
 Parameterized data width
@@ -287,13 +291,15 @@ Error detection
 Framing error detection
 Configurable number of stop bits
 More advanced SystemVerilog-based verification
-Tools Used
-Tool	Purpose
-Verilog HDL	RTL Design
-Icarus Verilog	Compilation & Simulation
-GTKWave	Waveform Analysis
-VS Code	Development
-Git & GitHub	Version Control
+
+
+## Tools Used
+Tool	                 Purpose
+Verilog HDL	          RTL Design
+Icarus Verilog	       Compilation & Simulation
+GTKWave	Waveform      Analysis
+VS Code              	Development
+Git & GitHub	         Version Control
 
 
 Author
