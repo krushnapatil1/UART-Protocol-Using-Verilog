@@ -271,7 +271,7 @@ rx_valid generation
 
 ## What I Learned
 
-Through this project, I learned
+Through this project, I learned:
 
 UART protocol fundamentals
 Serial communication
