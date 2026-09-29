@@ -258,9 +258,7 @@ The waveform generated during UART TX-RX simulation is included in the repositor
 The testbench verifies:
 
 UART TX operation
-
 UART RX operation
-
 Start bit generation
 Data bit transmission
 LSB-first transmission
